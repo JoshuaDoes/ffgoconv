@@ -27,7 +27,9 @@ type Streamer struct {
 // NewStreamer returns an initialized *Streamer or an error if one could not be created.
 //
 // If filepath is empty, the ffmpeg process will not start. You can specify any ffmpeg-supported location, such as a network URL or a local filepath.
+//
 // If args is nil or empty, the default values will be used. Do not specify your own args unless you understand how ffgoconv functions.
+//
 // The variable volume must be a floating-point number between 0 and 1, representing a percentage value. For example, 20% volume would be 0.2.
 func NewStreamer(filepath string, args []string, volume float64) (*Streamer, error) {
 	if filepath == "" {

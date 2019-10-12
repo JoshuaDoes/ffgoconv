@@ -30,12 +30,17 @@ type Transmuxer struct {
 // NewTransmuxer returns an initialized *Transmuxer or an error if one could not be created.
 //
 // If streamers is nil, it will be initialized automatically with an empty slice of *Streamer.
+//
 // If codec is not specified, the ffmpeg process will not start. A list of possible codecs can be found with "ffmpeg -codecs".
+//
 // If format is not specified, the ffmpeg process will not start. A list of possible formats can be found with "ffmpeg -formats".
+//
 // If bitrate is not specified, the ffmpeg process will not start.
-// The variable masterVolume must be a decimal-point number between 0 and 1, representing a percentage value. For example, 20% volume would be 0.2.
+//
+// The variable masterVolume must be a floating-point number between 0 and 1, representing a percentage value. For example, 20% volume would be 0.2.
 //
 // If outputFilepath is empty, a buffer of float64 PCM values will be initialized and the returned *Transmuxer can be then used as an io.Reader.
+//
 // If outputFilepath is "pipe:1", the FinalStream *Streamer can be used as an io.Reader to receive encoded audio data of the chosen codec in the chosen format.
 func NewTransmuxer(streamers []*Streamer, outputFilepath, codec, format, bitrate string, masterVolume float64) (*Transmuxer, error) {
 	if streamers == nil {
