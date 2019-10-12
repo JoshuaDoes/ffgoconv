@@ -36,7 +36,10 @@ func main() {
 	if len(files) > 0 {
 		for i, file := range files {
 			log.Println("Adding stream [:", i+1, "]:", file)
-			transmuxer.AddStreamer(file, nil, 1.0)
+			_, err = transmuxer.AddStreamer(file, nil, 1.0)
+			if err != nil {
+				panic(err)
+			}
 		}
 	}
 

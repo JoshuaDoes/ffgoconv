@@ -92,18 +92,18 @@ func NewTransmuxer(streamers []*Streamer, outputFilepath, codec, format, bitrate
 
 // AddStreamer initializes and adds a *Streamer to the transmuxing session, or returns an error if one could not be initialized.
 // See NewStreamer for info on supported arguments.
-func (transmuxer *Transmuxer) AddStreamer(filepath string, args []string, volume float64) error {
+func (transmuxer *Transmuxer) AddStreamer(filepath string, args []string, volume float64) (*Streamer, error) {
 	if transmuxer.closed {
-		return errors.New("ffgoconv: transmuxer: closed")
+		return nil, errors.New("ffgoconv: transmuxer: closed")
 	}
 
 	streamer, err := NewStreamer(filepath, args, volume)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	transmuxer.Streamers = append(transmuxer.Streamers, streamer)
-	return nil
+	return streamer, nil
 }
 
 // SetMasterVolume sets the master volume of the finalized audio.
