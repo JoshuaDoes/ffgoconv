@@ -7,6 +7,11 @@ This library is heavily a work-in-progress and is deemed alpha. Although it work
 ## Installing
 `go get github.com/JoshuaDoes/ffgoconv`
 
+## Documentation
+Auto-generated documentation can be found below.
+
+[![GoDoc](https://godoc.org/github.com/JoshuaDoes/ffgoconv?status.svg)](https://godoc.org/github.com/JoshuaDoes/ffgoconv)
+
 ## Example
 An example can be found in the `example` directory. It provides a bare-minimum implementation of ffgoconv and takes ffmpeg stream locations as parameters, outputting a few seconds of audio to `example/test.mp3`.
 
